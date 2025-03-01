@@ -73,5 +73,17 @@ return {
 		opts = {
 			keys = 'etovxqpdygfblzhckisuran'
 		}
+	},
+	{
+		'nvim-lualine/lualine.nvim',
+		dependencies = { 'nvim-tree/nvim-web-devicons' }
+	},
+	{
+		"sphamba/smear-cursor.nvim",
+		opts = {},
+	},
+	{
+		"lewis6991/gitsigns.nvim",
+		opts = {}
 	}
 }
