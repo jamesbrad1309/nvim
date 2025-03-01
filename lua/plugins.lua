@@ -85,5 +85,9 @@ return {
 	{
 		"lewis6991/gitsigns.nvim",
 		opts = {}
+	},
+	{
+		'b3nj5m1n/kommentary',
+		opts = {}
 	}
 }
