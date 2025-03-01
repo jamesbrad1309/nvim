@@ -87,7 +87,9 @@ return {
 		opts = {}
 	},
 	{
-		'b3nj5m1n/kommentary',
-		opts = {}
+		'numToStr/Comment.nvim',
+		opts = {
+			-- add any options here
+		}
 	}
 }
