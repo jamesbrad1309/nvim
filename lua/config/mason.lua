@@ -1,0 +1,31 @@
+require("mason").setup()
+
+require("mason-lspconfig").setup({
+	automatic_installation = true
+})
+
+local lspconfig = require("lspconfig")
+local on_attach = function(_, bufnr)
+	local opts = { noremap = true, silent = true, buffer = bufnr }
+
+	vim.keymap.set("n", "gd", '<cmd>Lspsaga goto_definition<CR>', opts)
+	vim.keymap.set("n", "K", '<cmd>Lspsaga hover_doc<CR>', opts)
+	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+	vim.keymap.set("n", "ff", vim.lsp.buf.format, opts)
+
+	vim.keymap.set("n", "<M-p>", '<cmd>Lspsaga diagnostic_jump_next<CR>', opts)
+	vim.keymap.set("n", "<M-t>", '<cmd>Lspsaga peek_type_definition<CR>', opts)
+	vim.keymap.set("n", "<M-u>", '<cmd>Lspsaga finder<CR>', opts)
+	vim.keymap.set("n", "<leader>.", '<cmd>Lspsaga code_action<CR>', opts)
+	vim.keymap.set("n", "<leader>7", '<cmd>Lspsaga outline<CR>', opts)
+	vim.keymap.set("n", "<leader>rn", '<cmd>Lspsaga rename<CR>', opts)
+end
+
+require("mason-lspconfig").setup_handlers({
+	function(server_name)
+		lspconfig[server_name].setup({
+			on_attach = on_attach
+		})
+	end,
+})
+
