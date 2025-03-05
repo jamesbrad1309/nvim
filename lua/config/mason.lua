@@ -4,6 +4,7 @@ require("mason-lspconfig").setup({
 	automatic_installation = true
 })
 
+
 local lspconfig = require("lspconfig")
 local on_attach = function(_, bufnr)
 	local opts = { noremap = true, silent = true, buffer = bufnr }
@@ -20,6 +21,13 @@ local on_attach = function(_, bufnr)
 	vim.keymap.set("n", "<leader>7", '<cmd>Lspsaga outline<CR>', opts)
 	vim.keymap.set("n", "<leader>rn", '<cmd>Lspsaga rename<CR>', opts)
 end
+
+require('go').setup{
+  lsp_cfg = false
+}
+local cfg = require'go.lsp'.config() -- config() return the go.nvim gopls setup
+
+require('lspconfig').gopls.setup(cfg)
 
 require("mason-lspconfig").setup_handlers({
 	function(server_name)
