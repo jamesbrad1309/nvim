@@ -1,13 +1,14 @@
 return {
-	"svrana/neosolarized.nvim",
+	"catppuccin/nvim",
+  name="catppuccin",
 	lazy = false,
 	priority = 1000,
 	config = function()
-		require("neosolarized").setup({
-			comment_italics = true,
-			background_set = false,
+		require("catppuccin").setup({
+      flavour = "mocha",
+      transparent_background = true,
 		})
-		vim.cmd.colorscheme("neosolarized")
+		vim.cmd.colorscheme("catppuccin")
 	end,
 	dependencies = {
 		"tjdevries/colorbuddy.nvim",
