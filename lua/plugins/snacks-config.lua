@@ -26,9 +26,6 @@ return {
 		notifier = {
 			enable = true,
 		},
-		explorer = {
-			enable = true,
-		},
 		picker = {
 			enable = true,
 		},
@@ -37,13 +34,6 @@ return {
 		},
 	},
 	keys = {
-		{
-			"<leader>e",
-			function()
-				Snacks.explorer()
-			end,
-			desc = "File Explorer",
-		},
 		{
 			"<leader>n",
 			function()
@@ -125,11 +115,11 @@ return {
 		},
 		-- LSP
 		{
-			"<M>u",
+			"pu",
 			function()
 				Snacks.picker.lsp_references()
 			end,
-			desc = "LSP References",
+			desc = "[P]eek LSP References",
 		},
 		{
 			"gd",
@@ -160,18 +150,18 @@ return {
 			desc = "Goto T[y]pe Definition",
 		},
 		{
-			"<M>i",
+			"pi",
 			function()
 				Snacks.picker.lsp_incoming_calls()
 			end,
-			desc = "C[a]lls Incoming",
+			desc = "[P]eek Calls Incoming",
 		},
 		{
-			"<M>o",
+			"po",
 			function()
 				Snacks.picker.lsp_outgoing_calls()
 			end,
-			desc = "C[a]lls Outgoing",
+			desc = "[P]eek Calls Outgoing",
 		},
 		{
 			"<leader>s",
