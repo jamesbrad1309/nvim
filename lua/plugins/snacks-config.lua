@@ -28,12 +28,36 @@ return {
 		},
 		picker = {
 			enable = true,
+			hidden = true,
+			ignored = true,
+			sources = {
+				files = {
+					hidden = true,
+				},
+			},
+		},
+		terminal = {
+			enable = true,
 		},
 		words = {
 			enable = true,
 		},
 	},
 	keys = {
+		{
+			"<leader>t",
+			function()
+				Snacks.terminal.toggle()
+			end,
+			desc = "Terminal",
+		},
+		{
+			"<leader>e",
+			function()
+				Snacks.explorer()
+			end,
+			desc = "File Explorer",
+		},
 		{
 			"<leader>n",
 			function()
@@ -42,21 +66,21 @@ return {
 			desc = "Notification History",
 		},
 		{
-			"<leader>:",
+			"<leader>fch",
 			function()
 				Snacks.picker.command_history()
 			end,
 			desc = "Command History",
 		},
 		{
-			"<leader>/",
+			"<leader>fg",
 			function()
 				Snacks.picker.grep()
 			end,
 			desc = "Grep",
 		},
 		{
-			"<leader>fs",
+			"<leader>fsm",
 			function()
 				Snacks.picker.smart()
 			end,
@@ -76,13 +100,6 @@ return {
 				Snacks.picker.files()
 			end,
 			desc = "Find Files",
-		},
-		{
-			"<leader>fg",
-			function()
-				Snacks.picker.git_files()
-			end,
-			desc = "Find Git Files",
 		},
 		{
 			"<leader>fp",
@@ -164,14 +181,14 @@ return {
 			desc = "[P]eek Calls Outgoing",
 		},
 		{
-			"<leader>s",
+			"<leader>fsb",
 			function()
 				Snacks.picker.lsp_symbols()
 			end,
 			desc = "LSP Symbols",
 		},
 		{
-			"<leader>S",
+			"<leader>fSb",
 			function()
 				Snacks.picker.lsp_workspace_symbols()
 			end,

@@ -1,5 +1,6 @@
 return {
-	"romgrk/barbar.nvim",
+	"akinsho/bufferline.nvim",
+	version = "*",
 	dependencies = {
 		"lewis6991/gitsigns.nvim", -- OPTIONAL: for git status
 		"nvim-tree/nvim-web-devicons", -- OPTIONAL: for file icons
@@ -12,5 +13,21 @@ return {
 		-- animation = true,
 		-- insert_at_start = true,
 		-- …etc.
+		options = {
+			offsets = {
+				{
+					filetype = "snacks_layout_box",
+					text = "󰙅  File Explorer",
+					separator = true,
+				},
+			},
+			animation = true,
+			mode = "buffers",
+			indicator = {
+				style = "underline",
+			},
+			separator_style = "thin",
+			diagnostics = "nvim_lsp",
+		},
 	},
 }
