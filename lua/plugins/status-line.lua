@@ -5,19 +5,29 @@ return {
 		options = {
 			icon_enabled = true,
 			theme = "catppuccin",
-			section_separators = { left = "", right = "" },
-			component_separators = { left = "", right = "" },
+			section_separators = { left = " ", right = " " },
+			component_separators = { left = "", right = "" },
 			disabled_filetypes = {},
 		},
 		sections = {
-			lualine_a = { "mode" },
-			lualine_b = { "branch" },
-			lualine_c = {
+			lualine_a = {},
+			lualine_b = {
 				{
 					"filename",
 					file_status = true, -- displays file status (readonly status, modified status)
-					path = 0, -- 0 = just filename, 1 = relative path, 2 = absolute path
+					path = 1, -- 0 = just filename, 1 = relative path, 2 = absolute path
 				},
+			},
+			lualine_c = {
+				"filetype",
+				function()
+					local total_lines = vim.fn.line("$")
+					if total_lines == 1 then
+						return "1 line"
+					else
+						return total_lines .. " lines"
+					end
+				end,
 				"diff",
 				"searchcount",
 			},
@@ -33,11 +43,12 @@ return {
 					},
 				},
 				"encoding",
-				"filetype",
 				"filesize",
+				"progress",
+				"location",
 			},
-			lualine_y = { "progress" },
-			lualine_z = { "location" },
+			lualine_y = { "branch" },
+			lualine_z = { "mode" },
 		},
 		inactive_sections = {
 			lualine_a = {},

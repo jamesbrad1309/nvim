@@ -14,10 +14,10 @@ vim.keymap.set("n", "ff", vim.lsp.buf.format, opts)
 vim.keymap.set("n", "<leader>w", ":w<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>q", ":bd<CR>", { noremap = true, silent = true })
 
-vim.keymap.set("n", "<A-j>", ":m+1<CR>==", opts)
-vim.keymap.set("n", "<A-k>", ":m-2<CR>==", opts)
-vim.keymap.set("v", "<A-j>", ":m'>+1<CR>gv=gv", opts)
-vim.keymap.set("v", "<A-k>", ":m'<-2<CR>gv=gv", opts)
+vim.keymap.set("n", "J", ":m+1<CR>==", opts)
+vim.keymap.set("n", "K", ":m-2<CR>==", opts)
+vim.keymap.set("v", "J", ":m'>+1<CR>gv=gv", opts)
+vim.keymap.set("v", "K", ":m'<-2<CR>gv=gv", opts)
 
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 	pattern = "*",
