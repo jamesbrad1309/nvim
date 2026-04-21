@@ -4,13 +4,17 @@ return {
 	opts = {
 		options = {
 			icon_enabled = true,
-			theme = "catppuccin",
+			theme = "solarized",
 			section_separators = { left = " ", right = " " },
 			component_separators = { left = "", right = "" },
 			disabled_filetypes = {},
 		},
 		sections = {
-			lualine_a = {},
+			lualine_a = {
+				function()
+					return ""
+				end,
+			},
 			lualine_b = {
 				{
 					"filename",

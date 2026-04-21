@@ -16,7 +16,8 @@ vim.opt.smartindent = true
 vim.opt.hlsearch = true
 vim.opt.backup = false
 vim.opt.showcmd = true
-vim.opt.cmdheight = 0
+vim.opt.cmdheight = 1
+vim.opt.showmode = false
 vim.opt.expandtab = true
 vim.opt.scrolloff = 10
 vim.opt.inccommand = "split"
@@ -37,3 +38,9 @@ vim.opt.mouse = ""
 -- Add asterisks in block comments
 vim.opt.formatoptions:append({ "r" })
 
+vim.filetype.add({
+  extension = {
+    ["http"] = "http",
+    ["rest"] = "http",
+  },
+})

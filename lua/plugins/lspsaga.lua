@@ -14,10 +14,10 @@ vim.keymap.set("n", "ff", vim.lsp.buf.format, opts)
 vim.keymap.set("n", "<leader>w", ":w<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>q", ":bd<CR>", { noremap = true, silent = true })
 
-vim.keymap.set("n", "J", ":m+1<CR>==", opts)
-vim.keymap.set("n", "K", ":m-2<CR>==", opts)
-vim.keymap.set("v", "J", ":m'>+1<CR>gv=gv", opts)
-vim.keymap.set("v", "K", ":m'<-2<CR>gv=gv", opts)
+vim.keymap.set("n", "<c-j>", ":m+1<CR>==", opts)
+vim.keymap.set("n", "<c-k>", ":m-2<CR>==", opts)
+vim.keymap.set("v", "<c-j>", ":m'>+1<CR>gv=gv", opts)
+vim.keymap.set("v", "<c-k>", ":m'<-2<CR>gv=gv", opts)
 
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 	pattern = "*",
@@ -33,10 +33,7 @@ return {
 		lightbulb = {
 			enable = false,
 		},
-		ui = {
-			border = "rounded",
-			kind = require("catppuccin.groups.integrations.lsp_saga").custom_kind(),
-		},
+		ui = {},
 	},
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
