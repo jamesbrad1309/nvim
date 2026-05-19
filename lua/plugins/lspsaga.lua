@@ -1,39 +1,60 @@
-local opts = { noremap = true, silent = true, buffer = bufnr }
-
-vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
-
--- peek error
-vim.keymap.set("n", "pe", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
-
--- vim.keymap.set("n", "<M-t>", '<cmd>Lspsaga peek_type_definition<CR>', opts)
--- vim.keymap.set("n", "<M-u>", '<cmd>Lspsaga finder<CR>', opts)
-vim.keymap.set("n", "<leader>.", "<cmd>Lspsaga code_action<CR>", opts)
-vim.keymap.set("n", "<leader>7", "<cmd>Lspsaga outline<CR>", opts)
-vim.keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opts)
-vim.keymap.set("n", "ff", vim.lsp.buf.format, opts)
-vim.keymap.set("n", "<leader>w", ":w<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>q", ":bd<CR>", { noremap = true, silent = true })
-
-vim.keymap.set("n", "<c-j>", ":m+1<CR>==", opts)
-vim.keymap.set("n", "<c-k>", ":m-2<CR>==", opts)
-vim.keymap.set("v", "<c-j>", ":m'>+1<CR>gv=gv", opts)
-vim.keymap.set("v", "<c-k>", ":m'<-2<CR>gv=gv", opts)
-
-vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-	pattern = "*",
-	callback = function()
-		vim.lsp.buf.format()
-	end,
-})
-
 return {
 	"nvimdev/lspsaga.nvim",
 	event = "BufRead",
 	opts = {
-		lightbulb = {
-			enable = false,
+		ui = {
+			border = "rounded",
+			devicon = true,
+			folder_level = 2,
+			title = true,
+			expand = "⊞",
+			collapse = "⊟",
+			code_action = "💡",
+			actionfix = " ",
+			lines = { "┗", "┣", "┃", "━", "┏" },
+			kind = {},
 		},
-		ui = {},
+		lightbulb = {
+			enable = true,
+			enable_in_insert = false,
+			sign = true,
+			sign_priority = 40,
+			virtual_text = true,
+		},
+		symbol_in_winbar = {
+			enable = true,
+			separator = " › ",
+			hide_keyword = true,
+			show_file = true,
+			folder_level = 2,
+			respect_root = false,
+			color_mode = true,
+		},
+		diagnostic = {
+			show_code_action = true,
+			show_source = true,
+			jump_num_shortcut = true,
+			keys = {
+				exec_action = "o",
+				quit = "q",
+				expand = "u",
+				confirm = "<CR>",
+			},
+		},
+		outline = {
+			win_position = "right",
+			win_with = "",
+			win_width = 30,
+			show_detail = true,
+			auto_preview = true,
+			auto_refresh = true,
+			auto_close = true,
+			custom_sort = nil,
+			keys = {
+				expand_or_collapse = "o",
+				quit = "q",
+			},
+		},
 	},
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",

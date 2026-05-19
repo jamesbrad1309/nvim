@@ -6,7 +6,6 @@ return {
     },
     opts = {
         automatic_installation = true,
-        automatic_enable = true,
         ensure_installed = {
             "cssls",
             "tailwindcss",
@@ -25,6 +24,11 @@ return {
             "bashls",
             "vimls",
             "yamlls"
+        },
+        handlers = {
+            function(server_name)
+                require("lspconfig")[server_name].setup({})
+            end,
         },
     }
 }

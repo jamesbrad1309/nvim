@@ -2,17 +2,15 @@ return {
     "neovim/nvim-lspconfig",
     lazy = false,
     dependencies = {
-        -- { "ms-jpq/coq_nvim",               branch = "coq" },
-        -- { "ms-jpq/coq.artifacts",          branch = "artifacts" },
-        -- { "ms-jpq/coq.thirdparty",         branch = "3p" },
-        { "mason-org/mason.nvim" },
-        { "mason-org/mason-lspconfig.nvim" }
+        { "williamboman/mason.nvim" },
+        { "williamboman/mason-lspconfig.nvim" }
     },
     init = function()
         vim.g.coq_settings = {
             auto_start = true,
         }
     end,
+    -- Use a custom key to avoid lazy.nvim's auto-setup which fails on lspconfig
     opt = {
         inlay_hints = { enabled = true }
     }

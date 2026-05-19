@@ -4,11 +4,5 @@ return {
 	opts = {
 		keys = "etovxqpdygfblzhckisuran",
 	},
-	keys = {
-		{
-			"<leader><leader>f",
-			"<cmd>HopWord<CR>",
-			{ noremap = true, silent = true },
-		},
-	},
+	cmd = { "HopWord" },
 }

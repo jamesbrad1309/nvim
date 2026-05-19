@@ -1,22 +1,41 @@
 return {
 	"folke/which-key.nvim",
+	event = "VeryLazy",
 	opts = {
-		plugins = {
-			marks = true,
-			registers = true,
-			spelling = {
-				enabled = true,
-				suggestions = 20,
-			},
-			presets = {
-				operators = true,
-				motions = true,
-				text_objects = true,
-				windows = true,
-				nav = true,
-				z = true,
-				g = true,
-			},
+		preset = "modern",
+		spec = {
+			{ "<leader>f", group = "find", icon = " " },
+			{ "<leader>g", group = "git", icon = " " },
+			{ "<leader>u", group = "ui", icon = "󰙵 " },
+			{ "<leader>s", group = "search", icon = " " },
+			{ "<leader>R", group = "request", icon = "󰖟 " },
+			{ "<leader>c", group = "code", icon = " " },
+			{ "<leader>r", group = "rename", icon = "󰑕 " },
+			{ "<leader>d", group = "database", icon = "󰆼 " },
+			{ "g", group = "goto", icon = "󰘧 " },
+			{ "p", group = "peek", icon = " " },
+			{ "[", group = "Previous...", icon = " " },
+			{ "]", group = "Next...", icon = " " },
+		},
+		win = {
+			border = "rounded",
+		},
+		icons = {
+			breadcrumb = "»",
+			separator = "➜",
+			group = "+",
+		},
+		layout = {
+			spacing = 6,
+		},
+	},
+	keys = {
+		{
+			"<leader>?",
+			function()
+				require("which-key").show({ global = false })
+			end,
+			desc = "Buffer Local Keymaps (which-key)",
 		},
 	},
 }

@@ -1,6 +1,7 @@
 return {
   "nvim-treesitter/nvim-treesitter",
-  branch = "master",
+  build = ":TSUpdate",
+  event = { "BufReadPost", "BufNewFile" },
   opts = {
     ensure_installed = {
       "lua",
@@ -8,20 +9,25 @@ return {
       "vimdoc",
       "javascript",
       "typescript",
+      "tsx",
+      "bash",
       "html",
+      "css",
+      "scss",
       "python",
       "go",
       "markdown",
+      "markdown_inline",
+      "query",
+      "regex",
       "http",
       "json",
+      "jsonc",
       "xml",
     },
     sync_install = false,
     auto_install = true,
     highlight = { enable = true },
-    indent = { enable = true },
+    indent = { enable = false },
   },
-  config = function(_, opts)
-    require("nvim-treesitter.configs").setup(opts)
-  end,
 }

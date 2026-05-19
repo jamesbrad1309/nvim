@@ -1,9 +1,5 @@
 vim.scriptencoding = "utf-8"
 
-vim.g.mapleader = " "
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-
 vim.opt.termguicolors = true
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -26,7 +22,8 @@ vim.opt.smarttab = true
 vim.opt.breakindent = true
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
-vim.opt.wrap = false
+vim.opt.wrap = true
+vim.opt.linebreak = true
 vim.opt.backspace = { "start", "eol", "indent" }
 vim.opt.path:append({ "**" })
 vim.opt.wildignore:append({ "*/node_modules/*" })
@@ -42,5 +39,13 @@ vim.filetype.add({
   extension = {
     ["http"] = "http",
     ["rest"] = "http",
+    ["tsx"] = "typescriptreact",
   },
+})
+
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+	pattern = "*",
+	callback = function()
+		vim.lsp.buf.format()
+	end,
 })

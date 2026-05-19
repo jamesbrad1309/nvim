@@ -1,13 +1,6 @@
 return {
 	"kdheepak/lazygit.nvim",
-	keys = {
-		{
-			";c",
-			":LazyGit<Return>",
-			silent = true,
-			noremap = true,
-		},
-	},
+	cmd = "LazyGit",
 	-- optional for floating window border decoration
 	dependencies = {
 		"nvim-lua/plenary.nvim",
