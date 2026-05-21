@@ -57,7 +57,10 @@ map("n", "<leader>fp", function()
   Snacks.picker.projects({
     confirm = function(picker, item)
       picker:close()
-      local dir = item.path
+      local dir = item.file or item.path or item.dir or item.cwd
+      if not dir or dir == "" or type(dir) ~= "string" then
+        return
+      end
       vim.fn.chdir(dir)
       vim.schedule(function()
         vim.cmd("Telescope file_browser path=" .. vim.fn.fnameescape(dir))
