@@ -12,6 +12,8 @@ return {
         hidden = { file_browser = true, folder_browser = true },
         respect_gitignore = false,
         initial_mode = "normal",
+        auto_depth = true,
+        collapse_dirs = true,
         layout_config = { height = 40 },
         mappings = {
           ["i"] = {

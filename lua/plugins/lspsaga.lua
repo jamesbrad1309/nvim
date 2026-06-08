@@ -14,8 +14,14 @@ return {
 			lines = { "┗", "┣", "┃", "━", "┏" },
 			kind = {},
 		},
+		hover = {
+			max_width = 0.8,
+			max_height = 0.5,
+			open_link = "gx",
+			open_cmd = "!open",
+		},
 		lightbulb = {
-			enable = true,
+			enable = false,
 			enable_in_insert = false,
 			sign = true,
 			sign_priority = 40,
