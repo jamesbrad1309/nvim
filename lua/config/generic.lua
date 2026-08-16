@@ -1,5 +1,8 @@
 vim.scriptencoding = "utf-8"
 
+vim.opt.timeout = true
+vim.opt.timeoutlen = 300
+
 vim.opt.termguicolors = true
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -49,6 +52,16 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 	callback = function()
 		vim.lsp.buf.format()
 	end,
+})
+
+-- Configure diagnostic float options globally
+vim.diagnostic.config({
+  float = {
+    border = "rounded",
+    source = "always",
+    header = "",
+    prefix = "",
+  },
 })
 
 -- Open Telescope file_browser when opening a directory

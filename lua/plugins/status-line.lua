@@ -69,6 +69,6 @@ return {
 			lualine_z = {},
 		},
 		tabline = {},
-		extensions = { "fugitive" },
+		extensions = { "lazy" },
 	},
 }

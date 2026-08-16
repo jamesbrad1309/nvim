@@ -27,4 +27,5 @@ require("lazy").setup({
 
 -- Color scheme
 vim.opt.background = "dark"
-vim.cmd("colorscheme flexoki")
+vim.cmd("colorscheme tokyonight")
+

@@ -32,6 +32,7 @@ return {
                     opts = {
                         settings = {
                             gopls = {
+                                semanticTokens = true,
                                 analyses = {
                                     assignvariable = true,
                                     bools = true,

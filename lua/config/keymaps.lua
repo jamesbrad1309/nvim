@@ -11,6 +11,15 @@ vim.g.maplocalleader = "\\"
 map("n", "<leader>w", ":w<CR>", { desc = "Save file" })
 map("n", "<leader>q", ":bd<CR>", { desc = "Close buffer" })
 map("n", "<leader>uw", "<cmd>set wrap!<cr>", { desc = "Toggle Line Wrap" })
+map("n", "<leader>rc", function()
+  for name, _ in pairs(package.loaded) do
+    if name:match("^config%.") or name:match("^plugins%.") then
+      package.loaded[name] = nil
+    end
+  end
+  dofile(vim.fn.stdpath("config") .. "/init.lua")
+  vim.notify("Neovim configuration reloaded!", vim.log.levels.INFO, { title = "Config" })
+end, { desc = "Reload Config" })
 
 -- Better navigation for wrapped lines
 map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
@@ -33,8 +42,8 @@ map("n", "po", function() Snacks.picker.lsp_outgoing_calls() end, { desc = "Peek
 map("n", "pe", "<cmd>Lspsaga diagnostic_jump_next<CR>", { desc = "Peek Error" })
 
 -- Navigation (Previous/Next)
-map("n", "[d", function() vim.diagnostic.jump({ count = -1, float = true }) end, { desc = "Previous Diagnostic" })
-map("n", "]d", function() vim.diagnostic.jump({ count = 1, float = true }) end, { desc = "Next Diagnostic" })
+map("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { desc = "Previous Diagnostic" })
+map("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", { desc = "Next Diagnostic" })
 map("n", "[b", ":bprevious<CR>", { desc = "Previous Buffer" })
 map("n", "]b", ":bnext<CR>", { desc = "Next Buffer" })
 map("n", "<S-h>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev Buffer" })
@@ -45,7 +54,22 @@ map("n", "]q", ":cnext<CR>", { desc = "Next Quickfix" })
 map("n", "<leader>cd", vim.diagnostic.setloclist, { desc = "Diagnostic List" })
 map("n", "<leader>.", "<cmd>Lspsaga code_action<CR>", { desc = "Code Action" })
 
-map("n", "<leader>7", "<cmd>Lspsaga outline<CR>", { desc = "Outline" })
+map("n", "<leader>7", function()
+  local outline_win = nil
+  for _, win in ipairs(vim.api.nvim_list_wins()) do
+    local buf = vim.api.nvim_win_get_buf(win)
+    if vim.bo[buf].filetype == "sagaoutline" then
+      outline_win = win
+      break
+    end
+  end
+
+  if outline_win then
+    vim.api.nvim_win_close(outline_win, true)
+  else
+    vim.cmd("Lspsaga outline")
+  end
+end, { desc = "Toggle Outline" })
 map("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", { desc = "Rename" })
 map("n", "ff", vim.lsp.buf.format, { desc = "Format" })
 
@@ -54,7 +78,14 @@ map("n", "<leader><leader>f", "<cmd>HopWord<CR>", { desc = "Hop Word" })
 
 -- Snacks
 map("n", "<leader>t", function() Snacks.terminal.toggle() end, { desc = "Terminal" })
-map("n", "<leader>e", function() Snacks.explorer() end, { desc = "File Explorer" })
+map("n", "<leader>e", function()
+  local explorer = Snacks.picker.get({ source = "explorer" })[1]
+  if explorer then
+    explorer:close()
+  else
+    Snacks.explorer()
+  end
+end, { desc = "Toggle File Explorer" })
 map("n", "<leader>n", function() Snacks.picker.notifications() end, { desc = "Notification History" })
 map("n", "<leader>fch", function() Snacks.picker.command_history() end, { desc = "Command History" })
 map("n", "<leader>fg", function() Snacks.picker.grep() end, { desc = "Grep" })
@@ -105,4 +136,8 @@ map("n", "<leader>sB", ":Telescope file_browser path=%:p:h select_buffer=true<CR
 map("n", "<leader>sb", ":Telescope file_browser<CR>", { desc = "Search Browser (Root)" })
 
 -- Dadbod UI
-map("n", "<leader>d", "<cmd>NvimTreeClose<cr><cmd>tabnew<cr><bar><bar><cmd>DBUI<cr>", { desc = "Database UI" })
+map("n", "<leader>d", "<cmd>tabnew<cr><bar><bar><cmd>DBUI<cr>", { desc = "Database UI" })
+
+-- Glow Markdown Preview
+map("n", "<leader>mp", "<cmd>Glow<cr>", { desc = "Toggle Glow Markdown Preview", silent = true })
+

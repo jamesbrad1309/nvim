@@ -40,7 +40,13 @@ return {
 			end,
 			offsets = {
 				{
-					filetype = "NvimTree",
+					filetype = "snacks_explorer",
+					text = "File Explorer",
+					text_align = "left",
+					separator = true,
+				},
+				{
+					filetype = "snacks_layout_box",
 					text = "File Explorer",
 					text_align = "left",
 					separator = true,
