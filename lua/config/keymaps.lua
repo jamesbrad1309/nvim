@@ -21,6 +21,10 @@ map("n", "<leader>rc", function()
   vim.notify("Neovim configuration reloaded!", vim.log.levels.INFO, { title = "Config" })
 end, { desc = "Reload Config" })
 
+-- Clipboard (macOS system clipboard via pbcopy)
+map({ "n", "v" }, "<leader>y", '"+y', { desc = "Yank to Clipboard" })
+map("n", "<leader>Y", "<cmd>%y+<CR>", { desc = "Copy Whole File to Clipboard" })
+
 -- Better navigation for wrapped lines
 map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -72,6 +76,12 @@ map("n", "<leader>7", function()
 end, { desc = "Toggle Outline" })
 map("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", { desc = "Rename" })
 map("n", "ff", vim.lsp.buf.format, { desc = "Format" })
+map("n", "<leader>co", function()
+  vim.lsp.buf.code_action({
+    context = { only = { "source.organizeImports" } },
+    apply = true,
+  })
+end, { desc = "Organize Imports" })
 
 -- Hop
 map("n", "<leader><leader>f", "<cmd>HopWord<CR>", { desc = "Hop Word" })

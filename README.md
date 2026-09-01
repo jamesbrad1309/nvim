@@ -210,6 +210,7 @@ Leader keys:
 | `po` | `n` | Peek Outgoing Calls (Snacks Picker) |
 | `pe` | `n` | Jump to Next Diagnostic Error (Lspsaga) |
 | `<leader>.` | `n` | Code Actions menu (Lspsaga) |
+| `<leader>co` | `n` | Organize imports (`source.organizeImports`) |
 | `<leader>rn` | `n` | Rename symbol (Lspsaga) |
 | `<leader>7` | `n` | Toggle Symbols Outline sidebar (Lspsaga) |
 | `<leader>cd` | `n` | Open Diagnostics location list |
