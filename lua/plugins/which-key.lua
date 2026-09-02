@@ -12,6 +12,7 @@ return {
 			{ "<leader>c", group = "code", icon = " " },
 			{ "<leader>r", group = "rename/reload", icon = "󰑕 " },
 			{ "<leader>d", group = "database", icon = "󰆼 " },
+			{ "<leader>m", group = "mermaid", icon = "🧜 " },
 			{ "g", group = "goto", icon = "󰘧 " },
 			{ "p", group = "peek", icon = " " },
 			{ "[", group = "Previous...", icon = " " },

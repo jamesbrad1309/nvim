@@ -34,6 +34,7 @@ A personal, high-performance Neovim configuration built with Lua, focused on aes
 │       ├── lspsaga.lua
 │       ├── mason-lspconfig.lua
 │       ├── mason.lua
+│       ├── mermaid.lua
 │       ├── neoconf.lua
 │       ├── neoscroll.lua
 │       ├── noice.lua
@@ -146,6 +147,7 @@ All plugins are managed by [lazy.nvim](https://github.com/folke/lazy.nvim) with 
 | **vim-dadbod-completion** | [kristijanhusak/vim-dadbod-completion](https://github.com/kristijanhusak/vim-dadbod-completion) | SQL autocomplete provider for Dadbod buffers |
 | **codesnap.nvim** | [mistricky/codesnap.nvim](https://github.com/mistricky/codesnap.nvim) | Generates beautiful code snapshot images |
 | **glow.nvim** | [ellisonleao/glow.nvim](https://github.com/ellisonleao/glow.nvim) | Markdown live preview directly inside a Neovim floating window |
+| **mermaid.nvim** | [kevalin/mermaid.nvim](https://github.com/kevalin/mermaid.nvim) | Live browser preview, formatting, diagnostics, and in-terminal rendering of Mermaid diagrams (`.mmd` / `.mermaid`) |
 | **vim-wakatime** | [wakatime/vim-wakatime](https://github.com/wakatime/vim-wakatime) | Automatic metric and time tracking via WakaTime |
 
 ---
@@ -163,7 +165,7 @@ Configured in `lua/plugins/mason-lspconfig.lua`:
 
 ### Treesitter Parsers
 Auto-installed and syntax-highlighted in `lua/plugins/nvim-treesitter.lua`:
-`lua`, `vim`, `vimdoc`, `javascript`, `typescript`, `tsx`, `bash`, `html`, `css`, `scss`, `python`, `go`, `gomod`, `gosum`, `gowork`, `markdown`, `markdown_inline`, `query`, `regex`, `http`, `json`, `jsonc`, `xml`.
+`lua`, `vim`, `vimdoc`, `javascript`, `typescript`, `tsx`, `bash`, `html`, `css`, `scss`, `python`, `go`, `gomod`, `gosum`, `gowork`, `markdown`, `markdown_inline`, `query`, `regex`, `http`, `json`, `jsonc`, `xml`, `mermaid`.
 
 ---
 
@@ -252,6 +254,17 @@ Leader keys:
 | `<leader>cs` | `n` | Snapshot code screenshot (`codesnap`) |
 | `<leader>mp` | `n` | Toggle Glow Markdown preview window |
 
+### 7. Mermaid Diagrams (`mermaid` filetype only, `.mmd` / `.mermaid`)
+Buffer-local keymaps set in `lua/plugins/mermaid.lua`, overriding the global bindings above only inside `mermaid`-filetype buffers.
+
+| Keymap | Mode | Action |
+| :--- | :---: | :--- |
+| `<leader>mp` | `n` | Open live browser preview (auto-updates on edit) |
+| `<leader>mf` | `n` | Auto-format the current diagram |
+| `<leader>mr` | `n` | Render inline in the terminal (Kitty/Ghostty graphics protocol on Neovim 0.12+, or `chafa` ASCII/ANSI fallback) |
+| `<leader>mc` | `n` | Copy the live preview URL to the clipboard |
+| `<leader>mx` | `n` | Stop the preview server |
+
 ---
 
 ## 📋 Prerequisites
@@ -264,6 +277,8 @@ Leader keys:
   - `fd` (for file finding)
   - `lazygit` (optional, for git UI integration)
   - `glow` (optional, for CLI markdown rendering)
+  - `mmdc` / `@mermaid-js/mermaid-cli` (optional, powers `mermaid.nvim` diagnostics and terminal rendering — `npm install -g @mermaid-js/mermaid-cli`)
+  - `chafa` (optional, ASCII/ANSI fallback for `mermaid.nvim` terminal rendering on non-Kitty/Ghostty terminals — `brew install chafa`)
 
 ---
 

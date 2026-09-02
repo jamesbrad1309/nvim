@@ -22,6 +22,7 @@ local ensure_installed = {
   "json",
   "xml",
   "prisma",
+  "mermaid",
 }
 
 return {
