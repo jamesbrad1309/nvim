@@ -30,10 +30,19 @@ return {
     picker = {
       enable = true,
       hidden = true,
-      ignored = true,
+      ignored = false,
       sources = {
         files = {
           hidden = true,
+          exclude = { "node_modules", ".claude", ".git", ".github" },
+        },
+        grep = {
+          exclude = { "node_modules", ".claude", ".git", ".github" },
+        },
+        buffers = {
+          win = {
+            list = { keys = { ["x"] = "bufdelete" } },
+          },
         },
       },
     },

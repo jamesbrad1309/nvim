@@ -8,7 +8,6 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 -- General Keymaps
-map("n", "<leader>w", ":w<CR>", { desc = "Save file" })
 map("n", "<leader>q", ":bd<CR>", { desc = "Close buffer" })
 map("n", "<leader>uw", "<cmd>set wrap!<cr>", { desc = "Toggle Line Wrap" })
 map("n", "<leader>rc", function()
@@ -38,12 +37,12 @@ map("v", "<c-k>", ":m'<-2<CR>gv=gv", { desc = "Move selection up" })
 -- LSPsaga & Peek
 map("n", "K", "<cmd>Lspsaga hover_doc<CR>", { desc = "Hover Doc" })
 map("n", "gh", "<cmd>Lspsaga finder<CR>", { desc = "LSP Finder" })
-map("n", "pd", "<cmd>Lspsaga peek_definition<CR>", { desc = "Peek Definition" })
-map("n", "pt", "<cmd>Lspsaga peek_type_definition<CR>", { desc = "Peek Type Definition" })
-map("n", "pr", function() Snacks.picker.lsp_references() end, { desc = "Peek LSP References" })
-map("n", "pi", function() Snacks.picker.lsp_incoming_calls() end, { desc = "Peek Calls Incoming" })
-map("n", "po", function() Snacks.picker.lsp_outgoing_calls() end, { desc = "Peek Calls Outgoing" })
-map("n", "pe", "<cmd>Lspsaga diagnostic_jump_next<CR>", { desc = "Peek Error" })
+map("n", "<leader>pd", "<cmd>Lspsaga peek_definition<CR>", { desc = "Peek Definition" })
+map("n", "<leader>pt", "<cmd>Lspsaga peek_type_definition<CR>", { desc = "Peek Type Definition" })
+map("n", "<leader>pr", function() Snacks.picker.lsp_references() end, { desc = "Peek LSP References" })
+map("n", "<leader>pi", function() Snacks.picker.lsp_incoming_calls() end, { desc = "Peek Calls Incoming" })
+map("n", "<leader>po", function() Snacks.picker.lsp_outgoing_calls() end, { desc = "Peek Calls Outgoing" })
+map("n", "<leader>pe", "<cmd>Lspsaga diagnostic_jump_next<CR>", { desc = "Peek Error" })
 
 -- Navigation (Previous/Next)
 map("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { desc = "Previous Diagnostic" })
@@ -88,14 +87,7 @@ map("n", "<leader><leader>f", "<cmd>HopWord<CR>", { desc = "Hop Word" })
 
 -- Snacks
 map("n", "<leader>t", function() Snacks.terminal.toggle() end, { desc = "Terminal" })
-map("n", "<leader>e", function()
-  local explorer = Snacks.picker.get({ source = "explorer" })[1]
-  if explorer then
-    explorer:close()
-  else
-    Snacks.explorer()
-  end
-end, { desc = "Toggle File Explorer" })
+map("n", "<leader>e", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", { desc = "File Browser (Current File)" })
 map("n", "<leader>n", function() Snacks.picker.notifications() end, { desc = "Notification History" })
 map("n", "<leader>fch", function() Snacks.picker.command_history() end, { desc = "Command History" })
 map("n", "<leader>fg", function() Snacks.picker.grep() end, { desc = "Grep" })
@@ -150,4 +142,11 @@ map("n", "<leader>d", "<cmd>tabnew<cr><bar><bar><cmd>DBUI<cr>", { desc = "Databa
 
 -- Glow Markdown Preview
 map("n", "<leader>mp", "<cmd>Glow<cr>", { desc = "Toggle Glow Markdown Preview", silent = true })
+
+-- Window / Split management
+map("n", "<leader>wv", "<C-w>v", { desc = "Split Vertically" })
+map("n", "<leader>ws", "<C-w>s", { desc = "Split Horizontally" })
+map("n", "<leader>wc", "<C-w>c", { desc = "Close Window" })
+map("n", "<leader>wo", "<C-w>o", { desc = "Close Other Windows" })
+map("n", "<leader>we", "<C-w>=", { desc = "Equalize Window Sizes" })
 

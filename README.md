@@ -118,7 +118,7 @@ All plugins are managed by [lazy.nvim](https://github.com/folke/lazy.nvim) with 
 | **noice.nvim** | [folke/noice.nvim](https://github.com/folke/noice.nvim) | Replaces cmdline, popupmenu, and messages with floating UI views |
 | **nvim-notify** | [rcarriga/nvim-notify](https://github.com/rcarriga/nvim-notify) | Animated, minimalist notification popups |
 | **lualine.nvim** | [nvim-lualine/lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) | Custom statusline with file path, line count, diff, search count, LSP diagnostics & git branch |
-| **bufferline.nvim** | [akinsho/bufferline.nvim](https://github.com/akinsho/bufferline.nvim) | Tab/buffer line with LSP diagnostic indicators and Snacks Explorer offsets |
+| **bufferline.nvim** | [akinsho/bufferline.nvim](https://github.com/akinsho/bufferline.nvim) | Tab/buffer line with LSP diagnostic indicators |
 | **incline.nvim** | [b0o/incline.nvim](https://github.com/b0o/incline.nvim) | Floating window filename badge in the top-right corner with devicons and contrast coloring |
 | **smear-cursor.nvim** | [sphamba/smear-cursor.nvim](https://github.com/sphamba/smear-cursor.nvim) | Smooth fluid animation trails for cursor motions |
 | **neoscroll.nvim** | [karb94/neoscroll.nvim](https://github.com/karb94/neoscroll.nvim) | Smooth scrolling physics for `<C-u>`, `<C-d>`, `<C-b>`, `<C-f>` |
@@ -130,7 +130,7 @@ All plugins are managed by [lazy.nvim](https://github.com/folke/lazy.nvim) with 
 ### 4. Search, Navigation & Terminal
 | Plugin | Repository | Description / Highlights |
 | :--- | :--- | :--- |
-| **snacks.nvim** | [folke/snacks.nvim](https://github.com/folke/snacks.nvim) | High-performance QoL suite: Fast Picker, File Explorer, Lazygit wrapper, Floating Terminal, Dashboard, Indent guides, and Notifier |
+| **snacks.nvim** | [folke/snacks.nvim](https://github.com/folke/snacks.nvim) | High-performance QoL suite: Fast Picker, Lazygit wrapper, Floating Terminal, Dashboard, Indent guides, and Notifier |
 | **telescope.nvim** | [nvim-telescope/telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) | Highly extensible fuzzy finder for files, buffers, symbols, and diagnostics |
 | **telescope-file-browser.nvim** | [nvim-telescope/telescope-file-browser.nvim](https://github.com/nvim-telescope/telescope-file-browser.nvim) | File manager extension with grouped folders, hidden files, and vim-like navigation |
 | **hop.nvim** | [smoka7/hop.nvim](https://github.com/smoka7/hop.nvim) | EasyMotion-like jump navigation across words and lines |
@@ -178,7 +178,6 @@ Leader keys:
 ### 1. General & Editing
 | Keymap | Mode | Action |
 | :--- | :---: | :--- |
-| `<leader>w` | `n` | Save file (`:w<CR>`) |
 | `<leader>q` | `n` | Close buffer (`:bd<CR>`) |
 | `<leader>uw` | `n` | Toggle line wrapping |
 | `j` / `k` | `n` | Move through visual lines smoothly when wrapped |
@@ -205,12 +204,12 @@ Leader keys:
 | `gD` | `n` | Goto Declaration (Snacks Picker) |
 | `gI` | `n` | Goto Implementation (Snacks Picker) |
 | `gy` | `n` | Goto Type Definition (Snacks Picker) |
-| `pd` | `n` | Peek Definition (Lspsaga floating preview) |
-| `pt` | `n` | Peek Type Definition (Lspsaga) |
-| `pr` | `n` | Peek LSP References (Snacks Picker) |
-| `pi` | `n` | Peek Incoming Calls (Snacks Picker) |
-| `po` | `n` | Peek Outgoing Calls (Snacks Picker) |
-| `pe` | `n` | Jump to Next Diagnostic Error (Lspsaga) |
+| `<leader>pd` | `n` | Peek Definition (Lspsaga floating preview) |
+| `<leader>pt` | `n` | Peek Type Definition (Lspsaga) |
+| `<leader>pr` | `n` | Peek LSP References (Snacks Picker) |
+| `<leader>pi` | `n` | Peek Incoming Calls (Snacks Picker) |
+| `<leader>po` | `n` | Peek Outgoing Calls (Snacks Picker) |
+| `<leader>pe` | `n` | Jump to Next Diagnostic Error (Lspsaga) |
 | `<leader>.` | `n` | Code Actions menu (Lspsaga) |
 | `<leader>co` | `n` | Organize imports (`source.organizeImports`) |
 | `<leader>rn` | `n` | Rename symbol (Lspsaga) |
@@ -222,11 +221,11 @@ Leader keys:
 ### 4. File Search & Pickers
 | Keymap | Mode | Action |
 | :--- | :---: | :--- |
-| `<leader>e` | `n` | Toggle File Explorer tree (Snacks) |
-| `<leader>fF` | `n` | Fast Find Files (Snacks Picker) |
+| `<leader>e` | `n` | Telescope File Browser (Current file directory) |
+| `<leader>fF` | `n` | Fast Find Files (Snacks Picker, respects `.gitignore`) |
 | `<leader>fsm` | `n` | Smart Find Files (Snacks Picker) |
-| `<leader>fg` | `n` | Live Grep search (Snacks Picker) |
-| `<leader>fb` | `n` | Search open buffers |
+| `<leader>fg` | `n` | Live Grep search (Snacks Picker, respects `.gitignore`) |
+| `<leader>fb` | `n` | Search open buffers (`x` / `dd` / `<c-x>` to close a buffer from the list) |
 | `<leader>fr` | `n` | Search recent files |
 | `<leader>fp` | `n` | Search & Switch Projects (opens Telescope in selected dir) |
 | `<leader>fch` | `n` | Command history picker |
@@ -235,7 +234,16 @@ Leader keys:
 | `<leader>sb` | `n` | Telescope File Browser (Workspace root) |
 | `<leader>sB` | `n` | Telescope File Browser (Current file path) |
 
-### 5. Git Integration
+### 5. Window / Split Management
+| Keymap | Mode | Action |
+| :--- | :---: | :--- |
+| `<leader>wv` | `n` | Split window vertically |
+| `<leader>ws` | `n` | Split window horizontally |
+| `<leader>wc` | `n` | Close current window |
+| `<leader>wo` | `n` | Close all other windows |
+| `<leader>we` | `n` | Equalize window sizes |
+
+### 6. Git Integration
 | Keymap | Mode | Action |
 | :--- | :---: | :--- |
 | `<leader>lg` | `n` | Open Lazygit (via Snacks) |
@@ -243,7 +251,7 @@ Leader keys:
 | `<leader>gs` | `n` | Git Status picker |
 | `<leader>gb` | `n` | Git Branches picker |
 
-### 6. Tools & Productivity
+### 7. Tools & Productivity
 | Keymap | Mode | Action |
 | :--- | :---: | :--- |
 | `<leader>t` | `n` | Toggle Floating Terminal (Snacks) |
@@ -254,7 +262,7 @@ Leader keys:
 | `<leader>cs` | `n` | Snapshot code screenshot (`codesnap`) |
 | `<leader>mp` | `n` | Toggle Glow Markdown preview window |
 
-### 7. Mermaid Diagrams (`mermaid` filetype only, `.mmd` / `.mermaid`)
+### 8. Mermaid Diagrams (`mermaid` filetype only, `.mmd` / `.mermaid`)
 Buffer-local keymaps set in `lua/plugins/mermaid.lua`, overriding the global bindings above only inside `mermaid`-filetype buffers.
 
 | Keymap | Mode | Action |

@@ -3,17 +3,28 @@ return {
   dependencies = { "nvim-lua/plenary.nvim" },
   opts = {
     extensions = {
+      fzf = {
+        fuzzy = true,
+        override_generic_sorter = true,
+        override_file_sorter = true,
+        case_mode = "smart_case",
+      },
       file_browser = {
-        theme = "dropdown",
         -- disables netrw and use telescope-file-browser in its place
         hijack_netrw = true,
         grouped = true,
         hidden = { file_browser = true, folder_browser = true },
-        respect_gitignore = false,
+        respect_gitignore = true,
         initial_mode = "normal",
         auto_depth = true,
+        git_status = false,
         collapse_dirs = true,
-        layout_config = { height = 40 },
+        layout_strategy = "horizontal",
+        layout_config = {
+          height = 0.9,
+          width = 0.9,
+          preview_width = 0.55,
+        },
         mappings = {
           ["i"] = {
             ["<C-w>"] = function() vim.cmd('normal vbd') end,
@@ -46,7 +57,9 @@ return {
             end,
             ["/"] = function()
               vim.cmd('startinsert')
-            end
+            end,
+            ["t"] = false,
+            ["e"] = false,
           },
         },
       },
