@@ -18,7 +18,7 @@ return {
             "eslint",
             "ts_ls",
             "lua_ls",
-            "grammarly",
+            "harper_ls",
             "nginx_language_server",
             "pyright",
             "bashls",
