@@ -44,13 +44,11 @@ A personal, high-performance Neovim configuration built with Lua, focused on aes
 │       ├── nvim-tmux-navigation.lua
 │       ├── nvim-treesitter.lua
 │       ├── rest.lua
-│       ├── smear-cursor.lua
 │       ├── snacks-config.lua
 │       ├── status-line.lua
 │       ├── telescope-file-browser.lua
 │       ├── telescope.lua
 │       ├── vim-dabod-ui.lua
-│       ├── wakatime.lua
 │       ├── which-key.lua
 │       └── wilder.lua
 └── README.md
@@ -120,7 +118,6 @@ All plugins are managed by [lazy.nvim](https://github.com/folke/lazy.nvim) with 
 | **lualine.nvim** | [nvim-lualine/lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) | Custom statusline with file path, line count, diff, search count, LSP diagnostics & git branch |
 | **bufferline.nvim** | [akinsho/bufferline.nvim](https://github.com/akinsho/bufferline.nvim) | Tab/buffer line with LSP diagnostic indicators |
 | **incline.nvim** | [b0o/incline.nvim](https://github.com/b0o/incline.nvim) | Floating window filename badge in the top-right corner with devicons and contrast coloring |
-| **smear-cursor.nvim** | [sphamba/smear-cursor.nvim](https://github.com/sphamba/smear-cursor.nvim) | Smooth fluid animation trails for cursor motions |
 | **neoscroll.nvim** | [karb94/neoscroll.nvim](https://github.com/karb94/neoscroll.nvim) | Smooth scrolling physics for `<C-u>`, `<C-d>`, `<C-b>`, `<C-f>` |
 | **wilder.nvim** | [gelguy/wilder.nvim](https://github.com/gelguy/wilder.nvim) | Interactive modal suggestion menu for command-line and search |
 | **which-key.nvim** | [folke/which-key.nvim](https://github.com/folke/which-key.nvim) | Popup panel displaying available keybindings and structured groups |
@@ -148,7 +145,6 @@ All plugins are managed by [lazy.nvim](https://github.com/folke/lazy.nvim) with 
 | **codesnap.nvim** | [mistricky/codesnap.nvim](https://github.com/mistricky/codesnap.nvim) | Generates beautiful code snapshot images |
 | **glow.nvim** | [ellisonleao/glow.nvim](https://github.com/ellisonleao/glow.nvim) | Markdown live preview directly inside a Neovim floating window |
 | **mermaid.nvim** | [kevalin/mermaid.nvim](https://github.com/kevalin/mermaid.nvim) | Live browser preview, formatting, diagnostics, and in-terminal rendering of Mermaid diagrams (`.mmd` / `.mermaid`) |
-| **vim-wakatime** | [wakatime/vim-wakatime](https://github.com/wakatime/vim-wakatime) | Automatic metric and time tracking via WakaTime |
 
 ---
 
@@ -159,7 +155,7 @@ Configured in `lua/plugins/mason-lspconfig.lua`:
 - **Web & Frontend:** `html`, `cssls`, `tailwindcss`, `graphql`, `ts_ls` (TypeScript/JavaScript), `eslint`, `biome`
 - **Backend & Systems:** `gopls` (Go), `pyright` (Python), `lua_ls` (Lua), `bashls` (Bash/Shell), `vimls` (VimScript)
 - **DevOps & Formats:** `dockerls`, `docker_compose_language_service`, `nginx_language_server`, `yamlls`
-- **Writing:** `grammarly`
+- **Writing:** `harper_ls`
 
 > **Note on `gopls`:** Configured with advanced analyzers enabled (`shadow`, `nilness`, `unusedparams`, `unusedvariable`, `unusedwrite`), full documentation hover, `gofumpt`, staticcheck, code lenses (`generate`, `test`, `tidy`), and comprehensive parameter/type inlay hints.
 
