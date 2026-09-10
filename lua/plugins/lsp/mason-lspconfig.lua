@@ -27,10 +27,16 @@ return {
         },
         handlers = {
             function(server_name)
-                local opts = {}
+                local opts = {
+                    capabilities = require("blink.cmp").get_lsp_capabilities(),
+                    on_attach = function(client, bufnr)
+                        if client.server_capabilities.documentSymbolProvider then
+                            require("nvim-navic").attach(client, bufnr)
+                        end
+                    end,
+                }
                 if server_name == "gopls" then
-                    opts = {
-                        settings = {
+                    opts.settings = {
                             gopls = {
                                 semanticTokens = true,
                                 analyses = {
@@ -90,9 +96,9 @@ return {
                                     rangeVariableTypes = true,
                                 },
                             },
-                        },
                     }
                 end
+
                 require("lspconfig")[server_name].setup(opts)
             end,
         },

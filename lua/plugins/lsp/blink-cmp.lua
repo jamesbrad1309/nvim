@@ -1,0 +1,51 @@
+return {
+  "saghen/blink.cmp",
+  dependencies = { "rafamadriz/friendly-snippets" },
+  version = "1.*",
+  opts = {
+    keymap = { preset = "default" },
+    appearance = {
+      nerd_font_variant = "mono",
+      kind_icons = {
+        Text = "󰉿",
+        Method = "󰆧",
+        Function = "󰊕",
+        Constructor = "",
+        Field = "󰜢",
+        Variable = "󰀫",
+        Class = "󰠱",
+        Interface = "",
+        Module = "",
+        Property = "󰜢",
+        Unit = "󰑭",
+        Value = "󰎠",
+        Enum = "",
+        Keyword = "󰌋",
+        Snippet = "",
+        Color = "󰏘",
+        File = "󰈙",
+        Reference = "󰈇",
+        Folder = "󰉋",
+        EnumMember = "",
+        Constant = "󰏿",
+        Struct = "󰙅",
+        Event = "",
+        Operator = "󰆕",
+        TypeParameter = "",
+      },
+    },
+    completion = {
+      menu = {
+        draw = {
+          columns = { { "kind_icon" }, { "label", "label_description", gap = 1 }, { "kind" } },
+        },
+      },
+      documentation = { auto_show = true },
+    },
+    sources = {
+      default = { "lsp", "path", "snippets", "buffer" },
+    },
+    signature = { enabled = true },
+  },
+  opts_extend = { "sources.default" },
+}
