@@ -5,11 +5,6 @@ return {
         { "williamboman/mason.nvim" },
         { "williamboman/mason-lspconfig.nvim" }
     },
-    init = function()
-        vim.g.coq_settings = {
-            auto_start = true,
-        }
-    end,
     -- Use a custom key to avoid lazy.nvim's auto-setup which fails on lspconfig
     opts = {
         inlay_hints = { enabled = true }

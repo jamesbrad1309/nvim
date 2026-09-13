@@ -42,11 +42,10 @@ map("n", "<leader>pt", "<cmd>Lspsaga peek_type_definition<CR>", { desc = "Peek T
 map("n", "<leader>pr", function() Snacks.picker.lsp_references() end, { desc = "Peek LSP References" })
 map("n", "<leader>pi", function() Snacks.picker.lsp_incoming_calls() end, { desc = "Peek Calls Incoming" })
 map("n", "<leader>po", function() Snacks.picker.lsp_outgoing_calls() end, { desc = "Peek Calls Outgoing" })
-map("n", "<leader>pe", "<cmd>Lspsaga diagnostic_jump_next<CR>", { desc = "Peek Error" })
 
 -- Navigation (Previous/Next)
-map("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { desc = "Previous Diagnostic" })
-map("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", { desc = "Next Diagnostic" })
+-- Diagnostic navigation ([d/]d) lives in plugins/lsp/trouble.lua, which is
+-- the single source of truth for diagnostics browsing/navigation.
 map("n", "[b", ":bprevious<CR>", { desc = "Previous Buffer" })
 map("n", "]b", ":bnext<CR>", { desc = "Next Buffer" })
 map("n", "<S-h>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev Buffer" })
@@ -54,7 +53,6 @@ map("n", "<S-l>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next Buffer" })
 map("n", "[q", ":cprev<CR>", { desc = "Previous Quickfix" })
 map("n", "]q", ":cnext<CR>", { desc = "Next Quickfix" })
 
-map("n", "<leader>cd", vim.diagnostic.setloclist, { desc = "Diagnostic List" })
 map("n", "<leader>.", "<cmd>Lspsaga code_action<CR>", { desc = "Code Action" })
 
 map("n", "<leader>7", function()
@@ -74,7 +72,7 @@ map("n", "<leader>7", function()
   end
 end, { desc = "Toggle Outline" })
 map("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", { desc = "Rename" })
-map("n", "ff", vim.lsp.buf.format, { desc = "Format" })
+map("n", "<leader>cf", vim.lsp.buf.format, { desc = "Format" })
 map("n", "<leader>co", function()
   vim.lsp.buf.code_action({
     context = { only = { "source.organizeImports" } },
@@ -123,7 +121,7 @@ map("n", "<leader>fSb", function() Snacks.picker.lsp_workspace_symbols() end, { 
 map("n", "<leader>lg", function() Snacks.lazygit() end, { desc = "Lazygit" })
 
 -- Codesnap
-map("n", "<leader>cs", "<cmd>Codesnap<cr>", { desc = "Codesnap" })
+map("n", "<leader>cS", "<cmd>Codesnap<cr>", { desc = "Codesnap" })
 
 -- Kulala
 map("n", "<leader>Rs", function() require("kulala").run() end, { desc = "Send request" })

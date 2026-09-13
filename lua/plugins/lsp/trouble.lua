@@ -13,5 +13,15 @@ return {
     },
     { "<leader>xL", "<cmd>Trouble loclist toggle<cr>", desc = "Location List (Trouble)" },
     { "<leader>xQ", "<cmd>Trouble qflist toggle<cr>", desc = "Quickfix List (Trouble)" },
+    {
+      "[d",
+      function() require("trouble").prev({ skip_groups = true, jump = true, mode = "diagnostics" }) end,
+      desc = "Previous Diagnostic (Trouble)",
+    },
+    {
+      "]d",
+      function() require("trouble").next({ skip_groups = true, jump = true, mode = "diagnostics" }) end,
+      desc = "Next Diagnostic (Trouble)",
+    },
   },
 }

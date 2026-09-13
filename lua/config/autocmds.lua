@@ -1,8 +1,11 @@
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-	pattern = "*",
-	callback = function()
-		vim.lsp.buf.format()
-	end,
+  pattern = "*",
+  callback = function(args)
+    local ok, err = pcall(vim.lsp.buf.format, { bufnr = args.buf, timeout_ms = 3000 })
+    if not ok then
+      vim.notify("Format failed: " .. tostring(err), vim.log.levels.WARN)
+    end
+  end,
 })
 
 -- Open Telescope file_browser when opening a directory
