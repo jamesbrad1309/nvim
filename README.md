@@ -179,7 +179,6 @@ Leader keys:
 | `j` / `k` | `n` | Move through visual lines smoothly when wrapped |
 | `<C-j>` / `<C-k>` | `n` | Move current line down / up |
 | `<C-j>` / `<C-k>` | `v` | Move visual selection down / up |
-| `ff` | `n` | Format buffer (`vim.lsp.buf.format`) |
 | `<leader>?` | `n` | Open buffer-local keymaps cheat sheet (Which-Key) |
 
 ### 2. Navigation & Buffers
@@ -187,7 +186,7 @@ Leader keys:
 | :--- | :---: | :--- |
 | `[b` / `]b` | `n` | Previous / Next buffer |
 | `<S-h>` / `<S-l>` | `n` | Previous / Next buffer (Bufferline cycle) |
-| `[d` / `]d` | `n` | Jump to Previous / Next diagnostic (with float window) |
+| `[d` / `]d` | `n` | Jump to Previous / Next diagnostic (Trouble) |
 | `[q` / `]q` | `n` | Previous / Next quickfix item |
 | `<leader><leader>f` | `n` | Hop word jump (`HopWord`) |
 
@@ -205,14 +204,19 @@ Leader keys:
 | `<leader>pr` | `n` | Peek LSP References (Snacks Picker) |
 | `<leader>pi` | `n` | Peek Incoming Calls (Snacks Picker) |
 | `<leader>po` | `n` | Peek Outgoing Calls (Snacks Picker) |
-| `<leader>pe` | `n` | Jump to Next Diagnostic Error (Lspsaga) |
 | `<leader>.` | `n` | Code Actions menu (Lspsaga) |
 | `<leader>co` | `n` | Organize imports (`source.organizeImports`) |
 | `<leader>rn` | `n` | Rename symbol (Lspsaga) |
+| `<leader>cf` | `n` | Format buffer (`vim.lsp.buf.format`) |
 | `<leader>7` | `n` | Toggle Symbols Outline sidebar (Lspsaga) |
-| `<leader>cd` | `n` | Open Diagnostics location list |
 | `<leader>fsb` | `n` | Search LSP Document Symbols |
 | `<leader>fSb` | `n` | Search Workspace Symbols |
+| `<leader>xx` | `n` | Toggle Diagnostics list (Trouble) |
+| `<leader>xX` | `n` | Toggle Diagnostics list, current buffer only (Trouble) |
+| `<leader>cs` | `n` | Toggle Symbols list (Trouble) |
+| `<leader>cl` | `n` | Toggle LSP definitions/references/... list (Trouble) |
+| `<leader>xL` | `n` | Toggle Location list (Trouble) |
+| `<leader>xQ` | `n` | Toggle Quickfix list (Trouble) |
 
 ### 4. File Search & Pickers
 | Keymap | Mode | Action |
@@ -255,8 +259,12 @@ Leader keys:
 | `<leader>Rs` | `n` | Send current HTTP request under cursor (`kulala`) |
 | `<leader>Ra` | `n` | Send all HTTP requests in buffer (`kulala`) |
 | `<leader>Rb` | `n` | Open HTTP scratchpad (`kulala`) |
-| `<leader>cs` | `n` | Snapshot code screenshot (`codesnap`) |
+| `<leader>cS` | `n` | Snapshot code screenshot (`codesnap`) |
 | `<leader>mp` | `n` | Toggle Glow Markdown preview window |
+| `<C-,>` | `n` / `t` | Toggle Claude Code floating terminal |
+| `<leader>ac` | `n` | Toggle Claude Code floating terminal |
+| `<leader>aC` | `n` | Toggle Claude Code (continue last session) |
+| `<leader>aV` | `n` | Toggle Claude Code (verbose) |
 
 ### 8. Mermaid Diagrams (`mermaid` filetype only, `.mmd` / `.mermaid`)
 Buffer-local keymaps set in `lua/plugins/mermaid.lua`, overriding the global bindings above only inside `mermaid`-filetype buffers.
