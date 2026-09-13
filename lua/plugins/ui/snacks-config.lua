@@ -40,6 +40,8 @@ return {
           exclude = { "node_modules", ".claude", ".git", ".github" },
         },
         buffers = {
+          layout = "dropdown",
+          focus = "list",
           win = {
             list = { keys = { ["x"] = "bufdelete" } },
           },

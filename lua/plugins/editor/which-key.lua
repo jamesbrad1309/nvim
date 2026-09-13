@@ -16,6 +16,8 @@ return {
 			{ "<leader>w", group = "window", icon = "🪟 " },
 			{ "g", group = "goto", icon = "󰘧 " },
 			{ "<leader>p", group = "peek", icon = " " },
+			{ "<leader>a", group = "ai", icon = "🤖 " },
+			{ "<leader>x", group = "diagnostics/quickfix", icon = "󰒡 " },
 			{ "[", group = "Previous...", icon = " " },
 			{ "]", group = "Next...", icon = " " },
 		},
