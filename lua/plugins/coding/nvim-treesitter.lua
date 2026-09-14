@@ -23,6 +23,7 @@ local ensure_installed = {
   "xml",
   "prisma",
   "mermaid",
+  "graphql",
 }
 
 return {

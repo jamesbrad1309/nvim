@@ -48,10 +48,12 @@ map("n", "<leader>po", function() Snacks.picker.lsp_outgoing_calls() end, { desc
 -- the single source of truth for diagnostics browsing/navigation.
 map("n", "[b", ":bprevious<CR>", { desc = "Previous Buffer" })
 map("n", "]b", ":bnext<CR>", { desc = "Next Buffer" })
-map("n", "<S-h>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev Buffer" })
-map("n", "<S-l>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next Buffer" })
+map("n", "<S-h>", ":bprevious<CR>", { desc = "Prev Buffer" })
+map("n", "<S-l>", ":bnext<CR>", { desc = "Next Buffer" })
 map("n", "[q", ":cprev<CR>", { desc = "Previous Quickfix" })
 map("n", "]q", ":cnext<CR>", { desc = "Next Quickfix" })
+map("n", "[w", "<C-w>W", { desc = "Previous Window" })
+map("n", "]w", "<C-w>w", { desc = "Next Window" })
 
 map("n", "<leader>.", "<cmd>Lspsaga code_action<CR>", { desc = "Code Action" })
 
