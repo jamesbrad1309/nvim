@@ -2,6 +2,35 @@ return {
   "nvim-telescope/telescope.nvim",
   dependencies = { "nvim-lua/plenary.nvim" },
   opts = {
+    defaults = {
+      file_previewer = function(opts)
+        opts = opts or {}
+        opts.maker = function(filename, lnum, start, finish)
+          local utils = require("telescope.utils")
+          local stat = vim.uv.fs_stat(utils.path_expand(filename))
+          if stat and stat.type == "directory" then
+            return { "ls", "-la", utils.path_expand(filename) }
+          end
+
+          local has_less = vim.fn.executable("less") == 1
+          local command = { "bat", "--style=numbers", "--color=always", "--paging=always" }
+
+          if lnum then
+            vim.list_extend(command, { "--highlight-line", lnum })
+          end
+
+          if has_less then
+            vim.list_extend(command, { "--pager", start and string.format("less -RS +%s", start) or "less -RS" })
+          elseif start and finish then
+            vim.list_extend(command, { "-r", string.format("%s:%s", start, finish) })
+          end
+
+          vim.list_extend(command, { "--", utils.path_expand(filename) })
+          return command
+        end
+        return require("telescope.previewers").cat.new(opts)
+      end,
+    },
     extensions = {
       fzf = {
         fuzzy = true,
