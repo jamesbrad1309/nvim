@@ -222,7 +222,7 @@ Leader keys:
 | Keymap | Mode | Action |
 | :--- | :---: | :--- |
 | `<leader>e` | `n` | Telescope File Browser (Current file directory) |
-| `<leader>fF` | `n` | Fast Find Files (Snacks Picker, respects `.gitignore`) |
+| `<leader>fF` | `n` | Find Files in current file's directory (Snacks Picker) |
 | `<leader>fsm` | `n` | Smart Find Files (Snacks Picker) |
 | `<leader>fg` | `n` | Live Grep search (Snacks Picker, respects `.gitignore`) |
 | `<leader>fb` | `n` | Search open buffers (`x` / `dd` / `<c-x>` to close a buffer from the list) |
@@ -230,7 +230,7 @@ Leader keys:
 | `<leader>fp` | `n` | Search & Switch Projects (opens Telescope in selected dir) |
 | `<leader>fch` | `n` | Command history picker |
 | `<leader>fn` / `<leader>n` | `n` | Show Notification history |
-| `<leader>ff` | `n` | Telescope File Browser (Current file directory) |
+| `<leader>ff` | `n` | Find Files (Snacks Picker, respects `.gitignore`) |
 | `<leader>sb` | `n` | Telescope File Browser (Workspace root) |
 | `<leader>sB` | `n` | Telescope File Browser (Current file path) |
 

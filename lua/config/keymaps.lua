@@ -39,9 +39,9 @@ map("n", "K", "<cmd>Lspsaga hover_doc<CR>", { desc = "Hover Doc" })
 map("n", "gh", "<cmd>Lspsaga finder<CR>", { desc = "LSP Finder" })
 map("n", "<leader>pd", "<cmd>Lspsaga peek_definition<CR>", { desc = "Peek Definition" })
 map("n", "<leader>pt", "<cmd>Lspsaga peek_type_definition<CR>", { desc = "Peek Type Definition" })
-map("n", "<leader>pr", function() Snacks.picker.lsp_references() end, { desc = "Peek LSP References" })
-map("n", "<leader>pi", function() Snacks.picker.lsp_incoming_calls() end, { desc = "Peek Calls Incoming" })
-map("n", "<leader>po", function() Snacks.picker.lsp_outgoing_calls() end, { desc = "Peek Calls Outgoing" })
+map("n", "<leader>pr", function() Snacks.picker.lsp_references({ focus = "list" }) end, { desc = "Peek LSP References" })
+map("n", "<leader>pi", function() Snacks.picker.lsp_incoming_calls({ focus = "list" }) end, { desc = "Peek Calls Incoming" })
+map("n", "<leader>po", function() Snacks.picker.lsp_outgoing_calls({ focus = "list" }) end, { desc = "Peek Calls Outgoing" })
 
 -- Navigation (Previous/Next)
 -- Diagnostic navigation ([d/]d) lives in plugins/lsp/trouble.lua, which is
@@ -93,8 +93,8 @@ map("n", "<leader>fch", function() Snacks.picker.command_history() end, { desc =
 map("n", "<leader>fg", function() Snacks.picker.grep() end, { desc = "Grep" })
 map("n", "<leader>fsm", function() Snacks.picker.smart() end, { desc = "Smart Find Files" })
 map("n", "<leader>fb", function() Snacks.picker.buffers() end, { desc = "Buffers" })
-map("n", "<leader>ff", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", { desc = "File Browser (Current File)" })
-map("n", "<leader>fF", function() Snacks.picker.files() end, { desc = "Find Files (Fast)" })
+map("n", "<leader>ff", function() Snacks.picker.files() end, { desc = "Find Files" })
+map("n", "<leader>fF", function() Snacks.picker.files({ cwd = vim.fn.expand("%:p:h") }) end, { desc = "Find Files (Current Dir)" })
 map("n", "<leader>fp", function()
   Snacks.picker.projects({
     confirm = function(picker, item)
