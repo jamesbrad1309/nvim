@@ -44,8 +44,8 @@ map("n", "<leader>pi", function() Snacks.picker.lsp_incoming_calls({ focus = "li
 map("n", "<leader>po", function() Snacks.picker.lsp_outgoing_calls({ focus = "list" }) end, { desc = "Peek Calls Outgoing" })
 
 -- Navigation (Previous/Next)
--- Diagnostic navigation ([d/]d) lives in plugins/lsp/trouble.lua, which is
--- the single source of truth for diagnostics browsing/navigation.
+map("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { desc = "Previous Diagnostic" })
+map("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", { desc = "Next Diagnostic" })
 map("n", "[b", ":bprevious<CR>", { desc = "Previous Buffer" })
 map("n", "]b", ":bnext<CR>", { desc = "Next Buffer" })
 map("n", "<S-h>", ":bprevious<CR>", { desc = "Prev Buffer" })
